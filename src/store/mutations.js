@@ -1,4 +1,5 @@
 import * as types from './mutation-types'
+/*引入变量*/
 
 export default {
     // 增加总时间
@@ -11,9 +12,9 @@ export default {
   },
   // 新增计划
   [types.SAVE_PLAN] (state, plan) {
-    // 设置默认值，未来我们可以做登入直接读取昵称和头像
+    // 设置默认值昵称和头像
     const avatar = 'https://sfault-avatar.b0.upaiyun.com/147/223/147223148-573297d0913c5_huge256';
-
+    //向数据流push信息
     state.list.push(
       Object.assign({ name: 'jack', avatar: avatar }, plan)
     )

@@ -36,7 +36,6 @@ const router = new VueRouter({
   routes
 });
 
-/* eslint-disable no-new */
 // 实例化我们的Vue
 var app = new Vue({
   el: '#app',

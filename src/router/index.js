@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 
 Vue.use(Router)
 
+/*初始化路由*/
 export default new Router({
   routes: [
     {

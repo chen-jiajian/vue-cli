@@ -3,8 +3,10 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './actions'
 
+/*使用vuex*/
 Vue.use(Vuex);
 
+/*初始化*/
 const state = {
   totalTime: 0,
   list: []

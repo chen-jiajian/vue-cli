@@ -7,9 +7,10 @@
   }
 </script>
 
-<!--导航-->
+
 <template>
   <div id="wrapper">
+  <!--导航-->
     <nav class="navbar navbar-default">
       <div class="container">
         <a class="navbar-brand" href="#">
@@ -24,10 +25,10 @@
     </nav>
    <div class="container">
     <div class="col-sm-3">
-      <!--计划列表组件-->
+      <!--显示总时长组件-->
       <sidebar></sidebar>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9">    
       <router-view></router-view>
     </div>
   </div>
