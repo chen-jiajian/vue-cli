@@ -21,14 +21,12 @@
     <router-view></router-view>
 
     <div class="time-entries">
-      <p v-if="!plans.length"><strong>还没有任何计划</strong></p>
+      <p v-if="!plans.length"><strong>还没有任何计划</strong></p><!--如果没有计划就显示-->
 
       <div class="list-group">
-      <!--
-        v-for循环，注意参数顺序为(item,index) in items
-      -->
-        <a class="list-group-item" v-for="(plan,index) in plans">
-          <div class="row">
+     
+        <a class="list-group-item a_list" v-for="(plan,index) in plans" v-bind:class="{ complete:plan.completed }">
+          <div class="row " >
             <div class="col-sm-2 user-details">
 
             <!--
@@ -56,16 +54,28 @@
               </p>
             </div>
 
-            <div class="col-sm-7 comment-section">
+            <div class="col-sm-6 comment-section">
               <p>{{ plan.comment }}</p>
             </div>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
               <button
-                class="btn btn-xs btn-danger delete-button"
+                class="btn btn-xs btn-danger delete-button btn_delete"
                 @click="deletePlan(index)">
               X
               </button>
+
+              <div>
+              <button v-if="!plan.completed" class="btn btn-sm btn-primary btn_finish"
+                @click="finishPlan(index)" >
+                 完成
+              </button>
+              <button v-if="plan.completed" class="btn btn-sm btn-warning btn_finish"
+                 @click="unfinishPlan(index)">
+                 未完成
+              </button>
+              </div>
+            
             </div>
 
           </div>
@@ -77,6 +87,21 @@
 </template>
 
 <script>
+    /*$("[name='my-checkbox']").bootstrapSwitch();
+
+    $("[name='i-checkbox']").each(function() {
+            $this = $(this);
+            var onText = $this.attr("onText");
+            var offText = $this.attr("offText");
+            var labelText = $this.attr("labelText");
+
+            var $switch_input = $(" :only-child", $this);
+            $switch_input.bootstrapSwitch({
+                onText : onText,
+                offText : offText,
+                labelText : labelText
+            });
+        });*/
     export default {
         name : 'TimeEntries',
         computed : {
@@ -91,7 +116,21 @@
             // 减去总时间
             this.$store.dispatch('decTotalTime',this.plans[idx].totalTime)
             // 删除该计划
+           
             this.$store.dispatch('deletePlan',idx)
+            
+          },
+          finishPlan(idx){
+            if(!this.$store.state.list[idx].completed){
+
+              this.$store.dispatch('finishPlan',idx);
+            }
+            
+          },
+          unfinishPlan(idx){
+            if(this.$store.state.list[idx].completed){
+              this.$store.dispatch('unfinishPlan',idx);
+            }
           }
         }
     }
@@ -115,5 +154,18 @@
   }
   .comment-section {
     padding: 20px;
+  }
+  .btn_finish{
+    margin-top:30%;
+    margin-left:50%;
+  }
+  .btn_delete{
+    float:right;
+  }
+  .complete{
+    border:1px solid #43bc86;
+  }
+  .a_list{
+    margin-top:10px;
   }
 </style>

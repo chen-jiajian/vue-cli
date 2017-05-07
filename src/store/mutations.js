@@ -17,10 +17,27 @@ export default {
     //向数据流push信息
     state.list.push(
       Object.assign({ name: 'jack', avatar: avatar }, plan)
-    )
+    );
+    state.sum+=1;
   },
   // 删除某计划
   [types.DELETE_PLAN] (state, idx) {
+    if(!state.list[idx].completed){
+      state.sum=state.sum-1;
+    }
     state.list.splice(idx, 1);
+
+    
+  },
+  // 完成某计划
+  [types.FINISH_PLAN] (state, idx) {   
+    state.list[idx].completed=true;
+    state.sum=state.sum-1;
+  },
+  // 取消完成某计划
+  [types.UNFINISH_PLAN] (state, idx) {   
+    state.list[idx].completed=false;
+    state.sum=state.sum+1;
   }
+  
 };

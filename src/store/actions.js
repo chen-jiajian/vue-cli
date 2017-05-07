@@ -14,5 +14,12 @@ export default {
   },
   deletePlan({ commit }, plan) {
     commit(types.DELETE_PLAN, plan)
-  }
+  },
+  //完成计划
+  finishPlan({commit}, plan){
+    commit(types.FINISH_PLAN, plan)
+  },
+  unfinishPlan({commit}, plan){
+    commit(types.UNFINISH_PLAN, plan)
+  },
 };

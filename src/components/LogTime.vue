@@ -55,7 +55,8 @@
               image : 'https://sfault-avatar.b0.upaiyun.com/888/223/888223038-5646dbc28d530_huge256',
               date : this.date,
               totalTime : this.totalTime,
-              comment : this.comment
+              comment : this.comment,
+              completed:false
             };
             this.$store.dispatch('savePlan', plan)
             this.$store.dispatch('addTotalTime', this.totalTime)

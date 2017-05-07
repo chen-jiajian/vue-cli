@@ -4,9 +4,15 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
 /*引入组件*/
+import 'bootstrap/dist/css/bootstrap.css'
+/*import 'bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css'
+import 'jquery/dist/jquery.js'
+import 'bootstrap/dist/js/bootstrap.js'
+import 'bootstrap-switch/dist/js/bootstrap-switch.js'*/
 import App from './App'
 import Home from './components/Home'
-import 'bootstrap/dist/css/bootstrap.css'
+
+
 import store from './store'
 import TimeEntries from './components/TimeEntries.vue'
 

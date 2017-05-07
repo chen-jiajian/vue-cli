@@ -9,6 +9,7 @@ Vue.use(Vuex);
 /*初始化*/
 const state = {
   totalTime: 0,
+  sum:0,
   list: []
 };
 
